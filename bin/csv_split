@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+require 'csv_splitter'
+require 'optparse'
+require 'pry'
+
+csv = ARGV[0] 
+unless csv
+  puts "You must specifiy a path to as csv to split"
+  exit(1)
+end
+unless File.exists?(csv) 
+  puts "#{csv} was not found"
+  exit(1)
+end
+
+options = {}
+OptionParser.new do |parser|
+  parser.on('-o', '--outpath [OUTPATH]') do |outpath|
+    options[:out_path] = outpath
+  end
+  parser.on('-s', '--splitby=SPLITBY') do |split_by|
+    options[:column_to_split_by] = split_by 
+  end
+end.parse!
+options.delete(:out_path) if options[:out_path].nil?
+
+splitter = CsvSplitter.new(csv, options)
+splitter.split!
