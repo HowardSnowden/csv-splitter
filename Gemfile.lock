@@ -2,12 +2,14 @@ PATH
   remote: .
   specs:
     csv_splitter (0.1.0)
+      zaru
 
 GEM
   remote: https://rubygems.org/
   specs:
     minitest (5.11.3)
     rake (10.4.2)
+    zaru (0.3.0)
 
 PLATFORMS
   ruby

@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   end
   spec.executables   = ['csv_split'] 
   spec.require_paths = ["lib"]
+  spec.add_runtime_dependency 'zaru'
 
   spec.add_development_dependency "bundler", "~> 1.16.a"
   spec.add_development_dependency "rake", "~> 10.0"
