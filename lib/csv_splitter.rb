@@ -1,6 +1,5 @@
 require 'csv'
 require 'zaru'
-require 'pry'
 class CsvSplitter
   def initialize(csv, out_path: '/tmp', column_to_split_by:, transform_headers: nil)
     @transform_header = transform_headers
