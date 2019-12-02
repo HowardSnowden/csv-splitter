@@ -12,7 +12,7 @@ class CsvSplitter
     last_file = ''
     csv_file =  CSV.parse(@file, {row_sep: :auto, header_converters: :symbol, headers: :true})   
     normalized_key = @column_to_split_by.gsub(' ', '_').downcase.to_sym
-    sorting_index = csv_file.headers.index()
+    sorting_index = csv_file.headers.index(normalized_key)
     csv_file.sort_by{|v| v[sorting_index] }.each do |row|
       current = Zaru.sanitize!(row[normalized_key].to_s.gsub(/_/, ' ').strip)
       
