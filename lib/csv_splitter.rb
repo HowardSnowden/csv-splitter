@@ -6,6 +6,7 @@ class CsvSplitter
     @file = File.read(csv).encode('UTF-8', :invalid => :replace, :undef => :replace, :replace => '')
     @out_path = out_path
     @column_to_split_by = column_to_split_by
+    @suppress_logging = suppress_logging
   end 
 
   def split! 
@@ -26,7 +27,7 @@ class CsvSplitter
       CSV.open(new_file, write_mode, write_headers: write_mode == 'w', headers: row.headers.map(&transform_block)) do |csv|
         csv << row.to_h.values
       end
-      puts "wrote to file for column #{current}" unless suppress_logging
+      puts "wrote to file for column #{current}" unless @suppress_logging
     end
   end
 end
